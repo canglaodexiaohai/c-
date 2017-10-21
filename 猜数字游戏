@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<Windows.h>
+#include<time.h>
+void menu()
+{
+	printf("******************************\n");
+	printf("**********猜数字游戏**********\n");
+	printf("*******1.play    0.quit ******\n");
+	printf("******************************\n");
+}
+void game()
+{
+	int num=0,input=0;
+	num=rand()%100+1;
+	while(1)
+	{
+	  printf("请输入你选择的数字");
+	  scanf("%d",&input);
+	  if(num>input)
+		  printf("小了\n");
+	  else if(num<input)
+		  printf("大了\n");
+	  else
+		{  
+			printf("猜对了\n");
+			break;
+	     }
+	}
+}
+int main()
+{
+	int input=0;
+	srand((unsigned int)time(NULL));
+	do
+	{
+		menu();
+		printf("请输入你的选择:》");
+		scanf("%d",&input);
+		switch(input)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			break;
+		default:
+			printf("输入错误，请重新输入：");
+				break;
+		}
+	}while(input);
+	return 0;
+}
