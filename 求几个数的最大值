@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdarg.h>
+int Max(int n, ...)
+{
+	int max = 0;
+	int i = 0;
+	int j = 0;
+	va_list arg;
+	va_start(arg, n);
+	j = va_arg(arg, int);
+	max = j;
+	for (i = 0; i < n; i++)
+	{
+		if (max < j)
+			max = j;
+		j = va_arg(arg, int);
+	}
+	va_end(arg);
+	return max;
+}
+int main()
+{
+	int ret = 0;
+	ret = Max(8,-1,-8,-9,-4,-8,-5,-2,0);
+	printf("ret=%d\n", ret);
+	return 0;
+}
